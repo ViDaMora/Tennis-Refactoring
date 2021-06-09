@@ -16,19 +16,8 @@ public class TennisGame2 implements TennisGame
 
     public String getScore(){
         String score = "";
-        if (P1point == P2point && P1point < 4)
-        {
-            if (P1point==0)
-                score = "Love";
-            if (P1point==1)
-                score = "Fifteen";
-            if (P1point==2)
-                score = "Thirty";
-            score += "-All";
-        }
-        if (P1point==P2point && P1point>=3)
-            score = "Deuce";
-        
+        score = equalPoints(score);
+
         if (P1point > 0 && P2point==0)
         {
             if (P1point==1)
@@ -99,7 +88,30 @@ public class TennisGame2 implements TennisGame
         }
         return score;
     }
-    
+
+    private String equalPoints(String score) {
+        String aux ="";
+        if (P1point == P2point && P1point < 3)
+        {
+            switch (P1point){
+                case 0:
+                    score = "Love";
+                    break;
+                case 1:
+                    score = "Fifteen";
+                    break;
+                case 2:
+                    score = "Thirty";
+                    break;
+            }
+            aux= score + "-All";
+        }else
+        {
+            aux = "Deuce";
+        }
+        return aux;
+    }
+
     public void SetP1Score(int number){
         
         for (int i = 0; i < number; i++)
